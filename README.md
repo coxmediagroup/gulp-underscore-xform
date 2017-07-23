@@ -1,7 +1,12 @@
+## Introduction
+
+This was forked from gulp-underscore-tpl.  Credit is due to longjiarun for putting together the original plugin.
+I wrote this in order to have a way to output HTML templates transpiled to plain HTML files as part of a gulp task.
+
 ## Install
 
 ```
-npm install gulp-underscore-tpl --save
+npm install gulp-underscore-xform --save
 ```
 
 ## Options
@@ -11,33 +16,27 @@ options see [underscore template](http://underscorejs.org/#template).
 ## How to use
 
 ```
-var template = require('gulp-underscore-tpl')
-gulp.task('tpl', function() {
-    return gulp.src('tpl/*.html')
-        .pipe(template(/*options*/))
-        .pipe(gulp.dest('js/tpl'))
+var template = require('gulp-underscore-xform')
+gulp.task('xform', function() {
+    return gulp.src('html/*.html')
+        .pipe(template(/*options*/, {name: 'Sweeny'}))
+        .pipe(gulp.dest('dist/html'))
 });
 ```
 
 ## Input
 
-tpl.html
+html/xform.html
 
 ```
 <h1><%= name%></h1>
 ```
 
 ## Output
-tpl.js
+dist/html/xform.html
 
 ```
-module.exports = function(data){
-    var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
-    __p+='<h1>'+
-    ((__t=( name))==null?'':__t)+
-    '</h1>';
-    return __p;
-};
+<h1>Sweeny</h1>
 ```
 
 ## LICENSE

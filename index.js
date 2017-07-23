@@ -3,15 +3,14 @@ var gutil = require('gulp-util'),
     _ = require('underscore'),
     PluginError = gutil.PluginError;
 
-var PLUGIN_NAME = 'gulp-underscore-tpl';
+var PLUGIN_NAME = 'gulp-underscore-xform';
 
-module.exports = function (options) {
-    options = options || {};
+module.exports = function (settings, param) {
+    settings = settings || {};
 
     function compile (file) {
-        var html = file.contents.toString(),
-            template = _.template(html, options).source;
-        return 'module.exports = ' + template + ';';
+        var html = file.contents.toString();
+        return _.template(html, settings)(param);
     }
 
     return through.obj(function (file, enc, callback) {
@@ -26,16 +25,11 @@ module.exports = function (options) {
             return callback();
         }
 
-        var filePath = file.path;
-
         try {
             var content = compile(file);
-
             file.contents = new Buffer(content);
-
-            file.path = gutil.replaceExtension(file.path, '.js');
         } catch (err) {
-            this.emit('error', new PluginError(PLUGIN_NAME, err, {fileName: filePath}));
+            this.emit('error', new PluginError(PLUGIN_NAME, err, {fileName: file.path}));
             return callback();
         }
 

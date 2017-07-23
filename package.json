@@ -13,13 +13,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/longjiarun/gulp-underscore-tpl.git"
+    "url": "https://github.com/davidreghay/gulp-underscore-xform"
   },
   "keywords": [
     "underscore",
     "template",
     "gulp"
   ],
-  "author": "longjia<https://github.com/longjiarun>",
+  "author": "davidreghay<https://github.com/davidreghay>",
   "license": "MIT"
 }
