@@ -1,5 +1,5 @@
 {
-  "name": "gulp-underscore-tpl",
+  "name": "gulp-underscore-xform",
   "version": "1.0.0",
   "description": "gulp underscore template",
   "main": "index.js",
