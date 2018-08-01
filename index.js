@@ -1,7 +1,7 @@
 var gutil = require('gulp-util'),
     through = require('through2'),
     _ = require('underscore'),
-    PluginError = gutil.PluginError;
+    PluginError = require('plugin-error');
 
 var PLUGIN_NAME = 'gulp-underscore-xform';
 
